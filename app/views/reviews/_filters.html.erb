@@ -1,8 +1,5 @@
-<div class="absolute left-0 top-0 w-100 bg-white shadow-lg rounded-lg p-6 border border-gray-200 z-10 h-screen hidden"
+<div class=" bg-white shadow-lg rounded-lg p-6 border border-gray-200 z-10 mb-8 md:mb-0"
      data-drawer-target="panel">
-  <div class="flex justify-end" data-action="click->drawer#close">
-    <%= render "shared/svg/close", color: "grey" %>
-  </div>
 
   <%= form_with url: reviews_path, method: :get,
       data: {
@@ -12,30 +9,26 @@
       },
       class: "divide-y divide-gray-200" do |f| %>
 
+    <!-- Company -->
+    <div class="pb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+      <%= f.select :company,
+          options_for_select([["All companies", ""]] + Company.order(:name).pluck(:name), params[:company]),
+          {},
+          class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-reva-blue focus:border-reva-blue",
+          data: { action: "change->autosubmit#submit" } %>
+    </div>
+
     <!-- Search -->
     <div class="py-4">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
       <%= f.text_field :search,
           value: params[:search],
-          placeholder: "Search description...",
+          placeholder: "Search reviews...",
           class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500",
           data: {
             action: "input->autosubmit#submit",
           } %>
-    </div>
-
-    <!-- Company -->
-    <div class="py-4">
-      <label class="block text-sm font-medium text-gray-700 mb-2">
-        Company
-      </label>
-      <%= f.select :company,
-          options_for_select(
-            [["All companies", ""]] + Company.order(:name).pluck(:name, :name),
-            params[:company]
-          ),
-          {},
-          class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500",
-          data: { action: "change->autosubmit#submit" } %>
     </div>
 
     <!-- Ratings -->
