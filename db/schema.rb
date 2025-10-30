@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_29_224353) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_30_223711) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_29_224353) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_companies_on_name", unique: true
+  end
+
+  create_table "net_promoter_scores", force: :cascade do |t|
+    t.bigint "company_id"
+    t.integer "promoters_count"
+    t.integer "passives_count"
+    t.integer "detractors_count"
+    t.integer "daily_score"
+    t.integer "reviews_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_net_promoter_scores_on_company_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -37,5 +49,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_29_224353) do
     t.index ["rating"], name: "index_reviews_on_rating"
   end
 
+  add_foreign_key "net_promoter_scores", "companies"
   add_foreign_key "reviews", "companies"
 end
