@@ -1,4 +1,9 @@
-<div class="bg-white rounded-lg shadow-sm border border-gray-200  top-4">
+<div class="absolute left-0 top-0 w-100 bg-white shadow-lg rounded-lg p-6 border border-gray-200 z-10 h-screen hidden"
+     data-drawer-target="panel">
+  <div class="flex justify-end" data-action="click->drawer#close">
+    <%= render "shared/svg/close", color: "grey" %>
+  </div>
+
   <%= form_with url: reviews_path, method: :get,
       data: {
         controller: "autosubmit",
@@ -8,7 +13,7 @@
       class: "divide-y divide-gray-200" do |f| %>
 
     <!-- Search -->
-    <div class="px-6 py-6">
+    <div class="py-4">
       <%= f.text_field :search,
           value: params[:search],
           placeholder: "Search description...",
@@ -19,7 +24,7 @@
     </div>
 
     <!-- Company -->
-    <div class="px-6 py-6">
+    <div class="py-4">
       <label class="block text-sm font-medium text-gray-700 mb-2">
         Company
       </label>
@@ -34,7 +39,7 @@
     </div>
 
     <!-- Ratings -->
-    <div class="px-6 py-6">
+    <div class="py-4">
       <label class="block text-sm font-medium text-gray-700 mb-3">
         Rating
       </label>
@@ -57,7 +62,7 @@
     </div>
 
     <!-- Channels -->
-    <div class="px-6 py-6">
+    <div class="py-4">
       <label class="block text-sm font-medium text-gray-700 mb-3">
         Channel
       </label>
@@ -78,11 +83,11 @@
     </div>
 
     <!-- Date Range -->
-    <div class="px-6 py-6">
+    <div class="py-6">
       <label class="block text-sm font-medium text-gray-700 mb-2">
         Date Range
       </label>
-      <div class="space-y-3 flex gap-12">
+      <div class="space-y-3 flex gap-6">
         <div>
           <label class="block text-xs text-gray-500 mb-1">From</label>
           <%= f.date_field :start_date,
