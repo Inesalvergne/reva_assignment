@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   root "reviews#index"
+  resources :reviews, only: %i[index]
 end

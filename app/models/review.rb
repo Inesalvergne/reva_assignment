@@ -13,4 +13,12 @@ class Review < ApplicationRecord
     internal: 3,
     vrbo: 4
   }, prefix: true
+
+  def display_date
+    date.strftime("%d %b. %Y")
+  end
+
+  def display_rating
+    "★" * rating + "☆" * (5 - rating)
+  end
 end

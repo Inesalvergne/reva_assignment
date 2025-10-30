@@ -1,14 +1,31 @@
-<div>
-<% @reviews.each do |review| %>
-  <div class="my-8">
-    <p class="text-md font-bold"><%= review.company_name %></p>
-    <p><%= review.date %></p>
-    <p><%= review.rating %></p>
-    <p><%= review.title %></p>
-    <p><%= review.description %></p>
-  </div>
-<% end %>
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-5 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          Company Name
+        </th>
+        <th scope="col" class="px-6 py-5 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          Date
+        </th>
+        <th scope="col" class="px-6 py-5 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          Rating
+        </th>
+        <th scope="col" class="px-6 py-5 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          Channel
+        </th>
+        <th scope="col" class="px-6 py-5 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          Title
+        </th>
+        <th scope="col" class="px-6 py-5 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          Description
+        </th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <%= render @reviews %>
+    </tbody>
+  </table>
 </div>
-
 
 <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
