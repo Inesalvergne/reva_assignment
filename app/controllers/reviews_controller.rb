@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.includes(:company)
+    @pagy, @reviews = pagy(Review.includes(:company), limit: 5)
   end
 end

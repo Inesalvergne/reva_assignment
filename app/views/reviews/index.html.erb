@@ -1,7 +1,7 @@
 <div>
 <% @reviews.each do |review| %>
-  <div>
-    <p><%= review.company_name %></p>
+  <div class="my-8">
+    <p class="text-md font-bold"><%= review.company_name %></p>
     <p><%= review.date %></p>
     <p><%= review.rating %></p>
     <p><%= review.title %></p>
@@ -9,3 +9,6 @@
   </div>
 <% end %>
 </div>
+
+
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
