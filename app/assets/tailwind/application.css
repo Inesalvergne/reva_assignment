@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@import "./components/pagy";
+
+@theme {
+  --color-reva-blue: #4F47E5;
+  --color-reva-black: #1F2937;
+  --color-reva-blue-bg: #C7D2FF;
+  --color-reva-grey: #F3F4F6;
+}
