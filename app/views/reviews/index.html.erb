@@ -13,12 +13,7 @@
 
   <div class="md:flex gap-4 w-full">
     <div>
-      <% if params[:company].present? %>
-        <%= render "shared/components/nps", nps: @company_nps, nps_gauge_arc_lengths: @company_gauge_arc_lengths, nps_percentages: @company_percentages %>
-      <% else %>
-        <%= render "shared/components/nps", nps: @global_nps, nps_gauge_arc_lengths: @global_gauge_arc_lengths, nps_percentages: @global_percentages %>
-      <% end %>
-
+      <%= render "shared/components/nps", nps: @nps %>
       <%= render "filters" %>
     </div>
     <div class="md:hidden mb-6">
