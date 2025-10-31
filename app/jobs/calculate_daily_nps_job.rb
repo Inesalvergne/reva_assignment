@@ -17,7 +17,6 @@ class CalculateDailyNpsJob < ApplicationJob
             )
            .group("companies.id")
            .find_each do |company|
-
       create_nps_record(
         promoters_count: company.promoters_count.to_i,
         passives_count: company.passives_count.to_i,
