@@ -1,16 +1,23 @@
 class ReviewsController < ApplicationController
-  before_action :load_nps_data, only: %i[index]
+  before_action :load_global_nps_data, only: %i[index]
 
   def index
     @pagy, @reviews = pagy(scoped_reviews, limit: 14)
+    load_company_nps_data(params[:company]) if params[:company].present?
   end
 
   private
 
-  def load_nps_data
+  def load_global_nps_data
     @global_nps = NetPromoterScore.global_nps
     @global_percentages = @global_nps.percentages
     @global_gauge_arc_lengths = @global_nps.gauge_arc_lengths
+  end
+
+  def load_company_nps_data(company_name)
+    @company_nps = NetPromoterScore.find_by(company: Company.find_by(name: company_name))
+    @company_percentages = @company_nps.percentages
+    @company_gauge_arc_lengths = @company_nps.gauge_arc_lengths
   end
 
   def scoped_reviews
