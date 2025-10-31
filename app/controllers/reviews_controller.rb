@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
 
   def index
     @pagy, @reviews = pagy(scoped_reviews, limit: 14)
+    @filter_params = %w[company description ratings channels start_date end_date]
   end
 
   private
