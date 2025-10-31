@@ -1,24 +1,42 @@
-# README
+# Review Explorer Page
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails application for importing and analyzing customer reviews from multiple channels with automatic Net Promoter Score calculation.
 
-Things you may want to cover:
+## Tech Stack
 
-* Ruby version
+- **Rails Version**: 7.2
+- **Ruby Version**: 3.2.2
+- **Database**: PostgreSQL
+- **Frontend**: Tailwind CSS + Hotwire (Turbo + Stimulus)
+- **Key Dependencies**: `pagy` (pagination), `pg_search` (full-text search)
 
-* System dependencies
+## Setup
 
-* Configuration
+### Prerequisites
+- **Rails**: 7.2
+- **Ruby**: 3.2.2
+- **PostgreSQL**: 9.3 or higher
+- **Bundler**: Latest version
 
-* Database creation
+### Installation 
 
-* Database initialization
+1. **Install dependencies**
+   
+   Run ```bundle install```
 
-* How to run the test suite
+3. **Quick setup for development**
+   
+   Run ```rake dev_setup```
 
-* Services (job queues, cache servers, search engines, etc.)
+   This command will:
+   - Drop, create, and migrate the database
+   - Import sample reviews from the CSV file
+   - Calculate NPS scores globally and for all companies
 
-* Deployment instructions
+  4. **Running the application**
 
-* ...
+  Start Rails server with `./bin/dev`
+
+  Visit the page at `http://localhost:3000/`
+   
+
