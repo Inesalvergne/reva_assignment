@@ -13,7 +13,7 @@
 
   <div class="md:flex gap-4 w-full">
     <div>
-      <%= render "shared/components/nps", nps: @nps %>
+      <%= render "shared/components/nps", nps: @nps if @nps %>
       <%= render "filters" %>
     </div>
     <div class="md:hidden mb-6">

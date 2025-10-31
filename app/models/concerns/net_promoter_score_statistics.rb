@@ -2,7 +2,7 @@ module NetPromoterScoreStatistics
   extend ActiveSupport::Concern
 
   def percentages
-    {
+    @percentages ||= {
       total: reviews_count,
       promoters: calculate_percentage(promoters_count),
       passives: calculate_percentage(passives_count),
@@ -11,7 +11,7 @@ module NetPromoterScoreStatistics
   end
 
   def gauge_arc_lengths
-    {
+    @gauge_arc_lengths ||= {
       promoters_arc: percentage_to_arc(percentages[:promoters]),
       passives_arc: percentage_to_arc(percentages[:passives]),
       detractors_arc: percentage_to_arc(percentages[:detractors])
