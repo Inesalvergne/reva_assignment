@@ -1,9 +1,17 @@
 class ReviewsController < ApplicationController
+  before_action :load_nps_data, only: %i[index]
+
   def index
-    @pagy, @reviews = pagy(scoped_reviews, limit: 12)
+    @pagy, @reviews = pagy(scoped_reviews, limit: 14)
   end
 
   private
+
+  def load_nps_data
+    @global_nps = NetPromoterScore.global_nps
+    @global_percentages = @global_nps.percentages
+    @global_gauge_arc_lengths = @global_nps.gauge_arc_lengths
+  end
 
   def scoped_reviews
     @reviews = Review.includes(:company).order(:date)
