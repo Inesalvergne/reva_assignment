@@ -1,6 +1,10 @@
 class Review < ApplicationRecord
   include PgSearch::Model
-  pg_search_scope :search_by_description, against: :description
+  pg_search_scope :search_by_description,
+                  against: :description,
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   validates :company, :channel, :date, :rating, presence: true
   validates :rating, inclusion: { in: 1..5 }
