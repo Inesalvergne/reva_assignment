@@ -1,7 +1,7 @@
 .pagy {
   @apply flex space-x-1 font-semibold text-sm text-gray-500 h-fit;
   a:not(.gap) {
-    @apply block rounded-lg px-3 py-1 bg-reva-grey;
+    @apply block rounded-lg px-3 py-1 bg-gray-100;
     &:hover {
       @apply bg-reva-blue text-white;
     }
@@ -13,7 +13,7 @@
     }
   }
   label {
-    @apply inline-block whitespace-nowrap bg-reva-grey rounded-lg px-3 py-0.5;
+    @apply inline-block whitespace-nowrap bg-gray-100 rounded-lg px-3 py-0.5;
     input {
       @apply bg-gray-100 border-none rounded-md;
     }

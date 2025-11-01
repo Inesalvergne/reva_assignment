@@ -108,6 +108,5 @@ end
 
 def normalize_description_for_uniqueness(description)
   return "" if description.blank?
-
   description
 end

@@ -12,5 +12,8 @@ task dev_setup: :environment do
   puts "Calculate NPS"
   Rake::Task["nps:calculate_daily_nps"].invoke
 
+  puts
+  puts "-" * 70
   puts "Setup completed ✅"
+  puts "-" * 70
 end
