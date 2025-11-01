@@ -2,6 +2,9 @@
 
 A Rails application for importing and analyzing customer reviews from multiple channels with automatic Net Promoter Score calculation.
 
+<img width="1468" height="832" alt="Screenshot 2025-10-31 at 14 44 20" src="https://github.com/user-attachments/assets/1d5b9e43-aebf-4258-9d2b-e423982e0a5c" />
+
+
 ## Tech Stack
 
 - **Rails Version**: 7.2
