@@ -33,6 +33,8 @@ namespace :reviews do
       if review.save
         reviews_created_count += 1
         puts "✨ Review created"
+      else
+        puts "❌ Error creating review - #{review.errors.messages}"
       end
 
     rescue ActiveRecord::RecordNotUnique
@@ -84,30 +86,27 @@ def clean_row(row, company)
   {
     company: company,
     channel: row["channel"].downcase,
-    rating: normalize_rating(row["rating"]),
+    rating: normalize_rating(row),
     date: Date.parse(row["date"]),
     title: row["title"],
     description: normalize_description_for_uniqueness(row["description"])
   }
 end
 
-def normalize_rating(row_rating)
-  row_rating = row_rating.to_i
+def normalize_rating(row)
+  rating = row["rating"].to_i
+  return rating if row["channel"].downcase != "internal"
 
-  case row_rating
-  when 1..5
-    row_rating
-  when 6..10
-    # convert 10-point scale rating to 5-point scale
-    # 10 -> 5, 9 -> 5, 8 -> 4, 7 -> 4, 6 -> 3
-    (row_rating / 2.0).round
-  else
-    nil
+  rating = case rating
+  when 10, 9 then 5
+  when 8, 7  then 4
+  when 6, 5  then 3
+  when 4, 3  then 2
+  when 2, 1  then 1
   end
 end
 
 def normalize_description_for_uniqueness(description)
   return "" if description.blank?
-
   description
 end

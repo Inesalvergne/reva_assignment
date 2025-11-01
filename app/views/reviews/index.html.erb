@@ -22,11 +22,10 @@
 
     <% if @pagy.count.zero? %>
       <div class="rounded-lg shadow-sm border border-gray-200 grow-1 flex justify-center items-center">
-        <p class="text-reva-black text-lg">We didn't find any reviews 🥲 Please try other filters.</p>
+        <p class="text-gray-900 text-lg">We didn't find any reviews 🥲 Please try other filters.</p>
       </div>
     <% else %>
       <%= render "table" %>
     <% end %>
-
   </div>
 <% end %>
